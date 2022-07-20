@@ -12,6 +12,10 @@ import java.util.Properties;
 @Slf4j
 @Getter
 public class Configuration {
+    /**
+     *
+     * @author Nidhi SHukla
+     */
     private final Properties properties = new Properties();
     private final String profile;
 
@@ -20,7 +24,7 @@ public class Configuration {
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         loadProperties();
     }
-
+//loading application property in system
     private void loadProperties() {
         String filename = String.format("application%s.properties", Optional.ofNullable(profile)
                                                                             .map("-"::concat)

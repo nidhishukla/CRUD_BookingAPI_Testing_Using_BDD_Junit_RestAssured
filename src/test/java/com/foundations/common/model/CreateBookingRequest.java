@@ -4,6 +4,10 @@ import lombok.Data;
 
 @Data
 public class CreateBookingRequest {
+    /**
+     *
+     * @author Nidhi SHukla
+     */
     public String firstname;
     public String lastname;
     public Integer totalprice;

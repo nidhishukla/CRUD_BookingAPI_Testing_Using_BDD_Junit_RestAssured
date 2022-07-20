@@ -14,7 +14,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ReservationSteps implements En {
-
+    /**
+     *
+     * @author Nidhi SHukla
+     */
     private final ReservationService reservationService;
     private final Configuration configuration;
     HashMap<String, Object>  map = new HashMap<>();
@@ -36,18 +39,15 @@ public class ReservationSteps implements En {
     private void getAuthorisation() {
         reservationService.getAuthKey(auth());
     }
-
     private void createHotelReservation() {
         reservationService.createBooking(createBookingRequest());
     }
-
     private void updateHotelReservation() {
         reservationService.updateBooking(updateBookingRequest());
     }
     private void cancelHotelReservation() {
         reservationService.cancelHotelReservation();
     }
-
     private void assertCreateReservation() {
         reservationService.assertBookingCreationwithtestdata(data);
     }

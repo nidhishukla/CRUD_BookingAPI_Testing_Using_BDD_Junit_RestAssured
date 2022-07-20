@@ -15,7 +15,10 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ReservationService extends AbstractBaseService {
-
+    /**
+     *
+     * @author Nidhi SHukla
+     */
     public static final String authPath = "/auth";
     public static final String createBookingPath = "/booking";
     public static final String deleteBookingPath = "/booking/";
@@ -25,27 +28,28 @@ public class ReservationService extends AbstractBaseService {
         super(configuration.getProperties().getProperty("base.path"));
         this.reservations = reservations;
     }
-
+//method executes the get authorization token request
     public void getAuthKey(AuthRequest auth) {
         var result = post(authPath, null, auth);
         assertThat(result.statusCode()).isEqualTo(HttpStatus.SC_OK);
         reservations.setAuthResponse(result.response().as(AuthResponse.class));
     }
-
+// method executes the create booking request
     public void createBooking(CreateBookingRequest bookingRequest) {
         var result = post(createBookingPath, null, bookingRequest);
         assertThat(result.statusCode()).isEqualTo(HttpStatus.SC_OK);
         reservations.setCreateBookingResponse(result.response().as(CreateBookingResponse.class));
     }
-
+    // method executes the update booking request
     public void updateBooking(CreateBookingRequest bookingRequest) {
         bookingRequest.setFirstname("updaterequest");
         String bookingId = reservations.getCreateBookingResponse().getBookingid();
-      //  String bookingId = reservations.getCreateBookingResponse().getBookingid();
         String token = reservations.getAuthResponse().getToken();
         var result = put(deleteBookingPath + bookingId, createHttpHeaders(token), bookingRequest);
         assertThat(result.statusCode()).isEqualTo(HttpStatus.SC_OK);
     }
+
+    // method executes the cancel booking request
     public void cancelHotelReservation() {
         String bookingId = reservations.getCreateBookingResponse().getBookingid();
         String token = reservations.getAuthResponse().getToken();
@@ -53,20 +57,6 @@ public class ReservationService extends AbstractBaseService {
         assertThat(result.statusCode()).isEqualTo(HttpStatus.SC_CREATED);
     }
 
-    // This method asserts most part of the createBooking response
-    public void assertBookingCreation() {
-        assertThat(reservations.getCreateBookingResponse().getBookingid()).isNotEmpty();
-        assertThat(reservations.getCreateBookingResponse().getBooking().getFirstname()).isEqualTo(
-                TestConstants.firstName);
-        assertThat(reservations.getCreateBookingResponse().getBooking().getLastname()).isEqualTo(
-                TestConstants.lastName);
-        assertThat(reservations.getCreateBookingResponse().getBooking().getTotalprice()).isEqualTo(
-                TestConstants.totalPrice);
-        assertThat(reservations.getCreateBookingResponse().getBooking().getDepositpaid()).isEqualTo(
-                TestConstants.depositPaid);
-        assertThat(reservations.getCreateBookingResponse().getBooking().getAdditionalneeds()).isEqualTo(
-                TestConstants.additionalNeeds);
-    }
     // This method asserts most part of the createBooking response
     public void assertBookingCreationwithtestdata(ArrayList response) {
         assertThat(reservations.getCreateBookingResponse().getBookingid()).isNotEmpty();
