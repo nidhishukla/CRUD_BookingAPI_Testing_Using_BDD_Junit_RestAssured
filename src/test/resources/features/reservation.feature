@@ -5,4 +5,5 @@
       Then User can create a hotel reservation
       And Reservation created with the correct information
       And User updated the reservation details
+      And User partially updated the reservation details
       And User can cancel the hotel reservation

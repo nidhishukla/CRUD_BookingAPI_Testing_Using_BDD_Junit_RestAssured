@@ -33,8 +33,9 @@ public class ReservationSteps implements En {
         Then("^Reservation created with the correct information$", this::assertCreateReservation);
         Then("^User can cancel the hotel reservation$", this::cancelHotelReservation);
         Then("User updated the reservation details", this::updateHotelReservation);
-
+        Then("User partially updated the reservation details",this::partiallyupdateHotelReservation);
     }
+
 
     private void getAuthorisation() {
         reservationService.getAuthKey(auth());
@@ -42,9 +43,9 @@ public class ReservationSteps implements En {
     private void createHotelReservation() {
         reservationService.createBooking(createBookingRequest());
     }
-    private void updateHotelReservation() {
-        reservationService.updateBooking(updateBookingRequest());
-    }
+    private void updateHotelReservation() {reservationService.updateBooking(updateBookingRequest());  }
+    private void partiallyupdateHotelReservation() {reservationService.partiallyUpdateBooking(partiallyUpdateHotelReservation());  }
+
     private void cancelHotelReservation() {
         reservationService.cancelHotelReservation();
     }
@@ -71,14 +72,21 @@ public class ReservationSteps implements En {
 
     private CreateBookingRequest updateBookingRequest() {
         CreateBookingRequest createBookingRequest = new CreateBookingRequest();
-        createBookingRequest.setFirstname(data.get(6).toString());
-        createBookingRequest.setLastname(data.get(2).toString());
-        createBookingRequest.setTotalprice(Integer.valueOf(data.get(3).toString()));
-        createBookingRequest.setDepositpaid(Boolean.valueOf(data.get(4).toString()));
+        createBookingRequest.setFirstname(data.get(8).toString());
+        createBookingRequest.setLastname(data.get(9).toString());
+        createBookingRequest.setTotalprice(Integer.valueOf(data.get(10).toString()));
+        createBookingRequest.setDepositpaid(Boolean.valueOf(data.get(11).toString()));
         createBookingRequest.setBookingdates(bookingDates());
-        createBookingRequest.setAdditionalneeds(data.get(5).toString());
+        createBookingRequest.setAdditionalneeds(data.get(12).toString());
         return createBookingRequest;
     }
+    private CreateBookingRequest partiallyUpdateHotelReservation() {
+        CreateBookingRequest createBookingRequest = new CreateBookingRequest();
+        createBookingRequest.setFirstname(data.get(13).toString());
+        createBookingRequest.setLastname(data.get(14).toString());
+        return createBookingRequest;
+    }
+
     private BookingDates bookingDates() {
         BookingDates bookingDates = new BookingDates();
         bookingDates.setCheckin("2021-01-01");

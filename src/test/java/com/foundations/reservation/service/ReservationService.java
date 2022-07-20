@@ -42,7 +42,13 @@ public class ReservationService extends AbstractBaseService {
     }
     // method executes the update booking request
     public void updateBooking(CreateBookingRequest bookingRequest) {
-        bookingRequest.setFirstname("updaterequest");
+        String bookingId = reservations.getCreateBookingResponse().getBookingid();
+        String token = reservations.getAuthResponse().getToken();
+        var result = put(deleteBookingPath + bookingId, createHttpHeaders(token), bookingRequest);
+        assertThat(result.statusCode()).isEqualTo(HttpStatus.SC_OK);
+    }
+    // method executes the update booking request
+    public void partiallyUpdateBooking(CreateBookingRequest bookingRequest) {
         String bookingId = reservations.getCreateBookingResponse().getBookingid();
         String token = reservations.getAuthResponse().getToken();
         var result = put(deleteBookingPath + bookingId, createHttpHeaders(token), bookingRequest);
