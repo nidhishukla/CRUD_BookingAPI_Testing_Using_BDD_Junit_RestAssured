@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/CRUD_BookingAPI_Testing_Using_BDD_Junit_RestAssured.iml" filepath="$PROJECT_DIR$/.idea/CRUD_BookingAPI_Testing_Using_BDD_Junit_RestAssured.iml" />
+    </modules>
+  </component>
+</project>
