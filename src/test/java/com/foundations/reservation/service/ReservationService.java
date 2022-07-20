@@ -3,11 +3,7 @@ package com.foundations.reservation.service;
 import com.foundations.common.AbstractBaseService;
 import com.foundations.common.config.Configuration;
 import com.foundations.common.config.TestConstants;
-import com.foundations.common.model.AuthRequest;
-import com.foundations.common.model.AuthResponse;
-import com.foundations.common.model.CreateBookingRequest;
-import com.foundations.common.model.CreateBookingResponse;
-import com.foundations.common.model.Reservations;
+import com.foundations.common.model.*;
 import org.apache.http.HttpStatus;
 
 import java.util.ArrayList;
@@ -34,7 +30,15 @@ public class ReservationService extends AbstractBaseService {
         assertThat(result.statusCode()).isEqualTo(HttpStatus.SC_OK);
         reservations.setAuthResponse(result.response().as(AuthResponse.class));
     }
-// method executes the create booking request
+
+    //method executes the get authorization token request
+    public void getAllBookingList() {
+        var result = get(createBookingPath);
+        assertThat(result.statusCode()).isEqualTo(HttpStatus.SC_OK);
+        //reservations.setGetBookingResponse(result.response().as(GetBookingResponse[].class));
+    }
+
+    // method executes the create booking request
     public void createBooking(CreateBookingRequest bookingRequest) {
         var result = post(createBookingPath, null, bookingRequest);
         assertThat(result.statusCode()).isEqualTo(HttpStatus.SC_OK);

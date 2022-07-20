@@ -23,6 +23,16 @@ public abstract class AbstractBaseService {
         this.baseUrl = baseUrl;
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
     }
+
+    //Common method for executing All POST Request
+    protected ExtractableResponse<Response> get(String path) {
+        return prepareUserRequest(baseUrl, null,null,null)
+                .get(path)
+                .then()
+                .extract();
+    }
+
+
 //Common method for executing All POST Request
     protected ExtractableResponse<Response> post(String path, Map<String, String> headers, Object body) {
         return prepareUserRequest(baseUrl, headers, ContentType.JSON.toString(),body)

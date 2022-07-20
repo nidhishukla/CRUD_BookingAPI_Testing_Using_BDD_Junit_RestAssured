@@ -29,22 +29,23 @@ public class ReservationSteps implements En {
         this.reservationService = reservationService;
         this.configuration = configuration;
         When("^User receives authorisation key$", this::getAuthorisation);
-        Then("^User can create a hotel reservation$", this::createHotelReservation);
+        Then("^User can create a hotel reservation$", this::createHotelBooking);
         Then("^Reservation created with the correct information$", this::assertCreateReservation);
         Then("^User can cancel the hotel reservation$", this::cancelHotelReservation);
-        Then("User updated the reservation details", this::updateHotelReservation);
-        Then("User partially updated the reservation details",this::partiallyupdateHotelReservation);
+        Then("User updated the reservation details", this::updateHotelBooking);
+        Then("User partially updated the reservation details",this::partiallyUpdateHotelBooking);
+        Then("User received all booking details",this::getAllBookings);
+
     }
-
-
     private void getAuthorisation() {
         reservationService.getAuthKey(auth());
     }
-    private void createHotelReservation() {
+    private void createHotelBooking() {
         reservationService.createBooking(createBookingRequest());
     }
-    private void updateHotelReservation() {reservationService.updateBooking(updateBookingRequest());  }
-    private void partiallyupdateHotelReservation() {reservationService.partiallyUpdateBooking(partiallyUpdateHotelReservation());  }
+    private void updateHotelBooking() {reservationService.updateBooking(updateBookingRequest());  }
+    private void partiallyUpdateHotelBooking() {reservationService.partiallyUpdateBooking(partiallyUpdateHotelReservation());  }
+    private void getAllBookings() {reservationService.getAllBookingList();  }
 
     private void cancelHotelReservation() {
         reservationService.cancelHotelReservation();

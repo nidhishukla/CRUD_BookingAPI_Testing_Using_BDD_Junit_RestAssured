@@ -7,3 +7,7 @@
       And User updated the reservation details
       And User partially updated the reservation details
       And User can cancel the hotel reservation
+
+    Scenario: As a admin I can get list of all bookings details
+      When User receives authorisation key
+      Then User received all booking details
