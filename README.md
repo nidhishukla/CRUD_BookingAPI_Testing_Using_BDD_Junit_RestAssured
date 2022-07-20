@@ -1,5 +1,6 @@
 # CRUD_BookingAPI_Testing_Using_BDD_Junit_RestAssured
- This project is an example of API Automation testing.
+ The project is example of API testing with BDD ,Junit,RestAssured using excel data driven approch. 
+ 
 ### API Documentation
 
 https://restful-booker.herokuapp.com/apidoc/
@@ -9,7 +10,7 @@ https://restful-booker.herokuapp.com/apidoc/
     2- type: mvn clean test
 
 ### How to run tests from Intellij
-1) Search for class `JunitDefault`
-2) Click with right button and select Run.
+1) Search for feature file named 'reservation.feature'
+2) Click with right button and select Run scenario.
 
-It will automatically run Junit Default tests
+It will automatically run the selected  test.
