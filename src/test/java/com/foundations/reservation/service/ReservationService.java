@@ -51,7 +51,7 @@ public class ReservationService extends AbstractBaseService {
     public void partiallyUpdateBooking(CreateBookingRequest bookingRequest) {
         String bookingId = reservations.getCreateBookingResponse().getBookingid();
         String token = reservations.getAuthResponse().getToken();
-        var result = put(deleteBookingPath + bookingId, createHttpHeaders(token), bookingRequest);
+        var result = patch(deleteBookingPath + bookingId, createHttpHeaders(token), bookingRequest);
         assertThat(result.statusCode()).isEqualTo(HttpStatus.SC_OK);
     }
 

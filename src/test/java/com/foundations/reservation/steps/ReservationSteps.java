@@ -82,8 +82,8 @@ public class ReservationSteps implements En {
     }
     private CreateBookingRequest partiallyUpdateHotelReservation() {
         CreateBookingRequest createBookingRequest = new CreateBookingRequest();
-        createBookingRequest.setFirstname(data.get(13).toString());
-        createBookingRequest.setLastname(data.get(14).toString());
+        createBookingRequest.setFirstname(data.get(15).toString());
+        createBookingRequest.setLastname(data.get(16).toString());
         return createBookingRequest;
     }
 

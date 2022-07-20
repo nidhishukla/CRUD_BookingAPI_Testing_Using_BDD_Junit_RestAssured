@@ -37,6 +37,13 @@ public abstract class AbstractBaseService {
                 .then()
                 .extract();
     }
+    //Common method for executing All PUT Request
+    protected ExtractableResponse<Response> patch(String path, Map<String, String> headers, Object body) {
+        return prepareUserRequest(baseUrl, headers, ContentType.JSON.toString(),body)
+                .patch(path)
+                .then()
+                .extract();
+    }
     //Common method for executing All DELETE Request
     protected ExtractableResponse<Response> delete(String path, Map<String, String> headers, Object body) {
         return prepareUserRequest(baseUrl, headers, ContentType.JSON.toString(),body)
