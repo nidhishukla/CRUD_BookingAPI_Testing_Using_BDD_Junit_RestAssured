@@ -13,4 +13,5 @@ public class Reservations {
     private volatile AuthResponse authResponse;
     private volatile CreateBookingResponse createBookingResponse;
     private volatile List<GetBookingResponse> getBookingResponse;
+    private volatile CreateBookingRequest getDetailsBookingResponse;
 }
