@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.foundations"},{"l":"com.foundations.common"},{"l":"com.foundations.common.config"},{"l":"com.foundations.common.model"},{"l":"com.foundations.reservation.service"},{"l":"com.foundations.reservation.steps"},{"l":"com.foundations.runners"}]
